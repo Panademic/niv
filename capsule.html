@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Write a message to your future self and reflect on your journey with our digital time capsule." />
+    <meta name="keywords" content="time capsule, future self, self reflection, personal growth, mental wellness" />
+    <meta name="author" content="Nivriti" />
+    <title>Time Capsule - Nivriti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="assets/icons/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        :root {
+            --primary-color: #2A9D8F;
+            --secondary-color: #264653;
+            --accent-color: #E9C46A;
+            --text-color: #333;
+            --light-text: #666;
+            --background-color: #F5F5F7;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            background-color: var(--secondary-color);
+            background-image: url('Images/time capsule.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero-section .overlay {
+            position: relative;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .main-nav {
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-list a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-list a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-list a.active {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-login, .btn-signup {
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login {
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-signup {
+            background: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .capsule-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .capsule-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--background-color);
+            border-radius: 8px;
+            font-family: 'Lato', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .capsule-btn {
+            background: var(--accent-color);
+            color: var(--secondary-color);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .capsule-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .capsules-list {
+            margin-top: 3rem;
+        }
+
+        .capsules-list h2 {
+            color: var(--secondary-color);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .capsule-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .capsule-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .capsule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--background-color);
+        }
+
+        .capsule-date {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        .capsule-message {
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links img {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover img {
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 400px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-list {
+                display: none;
+            }
+
+            .capsule-container {
+                padding: 1rem;
+                margin: 2rem auto;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--secondary-color);
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-list.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero-section">
+        <div class="overlay">
+            <nav class="main-nav">
+                <div class="logo">
+                    <a href="index.html">Nivriti</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="writing.html">Writing Space</a></li>
+                    <li><a href="reset.html">1-Minute Reset</a></li>
+                    <li><a href="detox.html">Mental Detox</a></li>
+                    <li><a href="capsule.html" class="active">Time Capsule</a></li>
+                    <li><a href="issues.html">Get Help</a></li>
+                    <li class="auth-buttons">
+                        <a href="login.html" class="btn-login">Login</a>
+                        <a href="signup.html" class="btn-signup">Sign Up</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hero-content">
+                <h1>Time Capsule</h1>
+                <p>Write a message to your future self and reflect on your journey</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="capsule-container">
+            <div class="capsule-form">
+                <form id="capsuleForm">
+                    <div class="form-group">
+                        <label for="capsuleTitle">Title</label>
+                        <input type="text" id="capsuleTitle" required placeholder="Give your message a title">
+                    </div>
+                    <div class="form-group">
+                        <label for="capsuleMessage">Message to Future Self</label>
+                        <textarea id="capsuleMessage" required placeholder="What would you like to tell your future self?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="openDate">Open Date</label>
+                        <input type="date" id="openDate" required>
+                    </div>
+                    <button type="submit" class="capsule-btn">Seal Time Capsule</button>
+                </form>
+            </div>
+
+            <div class="capsules-list">
+                <h2>Your Time Capsules</h2>
+                <div id="capsulesList">
+                    <!-- Capsules will be added here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>About Nivriti</h3>
+                    <p>Dedicated to promoting mental wellness and providing a safe space for personal growth.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://facebook.com/nivriti" target="_blank" rel="noopener" aria-label="Facebook">
+                            <img src="assets/icons/facebook-icon.svg" alt="Facebook">
+                        </a>
+                        <a href="https://instagram.com/nivriti" target="_blank" rel="noopener" aria-label="Instagram">
+                            <img src="assets/icons/instagram-icon.svg" alt="Instagram">
+                        </a>
+                        <a href="https://twitter.com/nivriti" target="_blank" rel="noopener" aria-label="Twitter">
+                            <img src="assets/icons/twitter-icon.svg" alt="Twitter">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Nivriti - Peace Begins Within. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const capsuleForm = document.getElementById('capsuleForm');
+            const capsulesList = document.getElementById('capsulesList');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navList = document.querySelector('.nav-list');
+
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', () => {
+                navList.classList.toggle('active');
+            });
+
+            // Set minimum date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('openDate').min = tomorrow.toISOString().split('T')[0];
+
+            // Load existing capsules
+            function loadCapsules() {
+                const capsules = JSON.parse(localStorage.getItem('timeCapsules') || '[]');
+                capsulesList.innerHTML = '';
+
+                capsules.sort((a, b) => new Date(a.openDate) - new Date(b.openDate)).forEach(capsule => {
+                    const canOpen = new Date(capsule.openDate) <= new Date();
+                    const capsuleEl = document.createElement('div');
+                    capsuleEl.classList.add('capsule-card');
+                    capsuleEl.innerHTML = `
+                        <div class="capsule-header">
+                            <h3>${capsule.title}</h3>
+                            <span class="capsule-date">Opens: ${new Date(capsule.openDate).toLocaleDateString()}</span>
+                        </div>
+                        <div class="capsule-message">
+                            ${canOpen ? capsule.message : '🔒 This message is sealed until ' + new Date(capsule.openDate).toLocaleDateString()}
+                        </div>
+                    `;
+                    capsulesList.appendChild(capsuleEl);
+                });
+            }
+
+            // Handle form submission
+            capsuleForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const capsule = {
+                    title: document.getElementById('capsuleTitle').value,
+                    message: document.getElementById('capsuleMessage').value,
+                    openDate: document.getElementById('openDate').value,
+                    createdAt: new Date().toISOString()
+                };
+
+                // Save to localStorage
+                const capsules = JSON.parse(localStorage.getItem('timeCapsules') || '[]');
+                capsules.push(capsule);
+                localStorage.setItem('timeCapsules', JSON.stringify(capsules));
+
+                // Reset form and reload capsules
+                capsuleForm.reset();
+                loadCapsules();
+
+                alert('Time capsule sealed successfully! 🎉');
+            });
+
+            // Initial load
+            loadCapsules();
+        });
+    </script>
+</body>
+</html>

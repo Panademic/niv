@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Express yourself freely in our peaceful writing space - a sanctuary for your thoughts and feelings." />
+    <meta name="keywords" content="writing space, journaling, self expression, mental wellness, mindfulness" />
+    <meta name="author" content="Nivriti" />
+    <title>Writing Space - Nivriti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="assets/icons/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        :root {
+            --primary-color: #2A9D8F;
+            --secondary-color: #264653;
+            --accent-color: #E9C46A;
+            --text-color: #333;
+            --light-text: #666;
+            --background-color: #F5F5F7;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            background-color: var(--secondary-color);
+            background-image: url('Images/writing.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero-section .overlay {
+            position: relative;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .main-nav {
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-list a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-list a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-list a.active {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-login, .btn-signup {
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login {
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-signup {
+            background: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .writing-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .writing-area {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--background-color);
+        }
+
+        .toolbar button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            background: var(--background-color);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toolbar button:hover {
+            background: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .editor {
+            min-height: 500px;
+            padding: 1rem;
+            border: 2px solid var(--background-color);
+            border-radius: 8px;
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+
+        .editor:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .mood-tracker {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: var(--background-color);
+            border-radius: 8px;
+        }
+
+        .mood-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .mood-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .mood-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mood-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mood-btn.selected {
+            background: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .save-btn, .publish-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .save-btn {
+            background: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .publish-btn {
+            background: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .save-btn:hover, .publish-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 400px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--secondary-color);
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-list.active {
+                display: flex;
+            }
+
+            .writing-container {
+                padding: 1rem;
+                margin: 2rem auto;
+            }
+
+            .toolbar {
+                flex-wrap: wrap;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero-section">
+        <div class="overlay">
+            <nav class="main-nav">
+                <div class="logo">
+                    <a href="index.html">Nivriti</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="writing.html" class="active">Writing Space</a></li>
+                    <li><a href="reset.html">1-Minute Reset</a></li>
+                    <li><a href="detox.html">Mental Detox</a></li>
+                    <li><a href="capsule.html">Time Capsule</a></li>
+                    <li><a href="issues.html">Get Help</a></li>
+                    <li class="auth-buttons">
+                        <a href="login.html" class="btn-login">Login</a>
+                        <a href="signup.html" class="btn-signup">Sign Up</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hero-content">
+                <h1>Writing Space</h1>
+                <p>Express yourself freely in a safe and peaceful environment</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="writing-container">
+            <div class="writing-area">
+                <div class="toolbar">
+                    <button onclick="formatText('bold')">Bold</button>
+                    <button onclick="formatText('italic')">Italic</button>
+                    <button onclick="formatText('underline')">Underline</button>
+                    <button onclick="formatText('h1')">Heading 1</button>
+                    <button onclick="formatText('h2')">Heading 2</button>
+                    <button onclick="formatText('list')">List</button>
+                </div>
+                <div class="editor" contenteditable="true" placeholder="Start writing here..."></div>
+                
+                <div class="mood-tracker">
+                    <h3 class="mood-title">How are you feeling?</h3>
+                    <div class="mood-buttons">
+                        <button class="mood-btn">😊 Happy</button>
+                        <button class="mood-btn">😌 Calm</button>
+                        <button class="mood-btn">😔 Sad</button>
+                        <button class="mood-btn">😤 Angry</button>
+                        <button class="mood-btn">😟 Anxious</button>
+                        <button class="mood-btn">😴 Tired</button>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="save-btn">Save Draft</button>
+                    <button class="publish-btn">Publish Entry</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navList = document.querySelector('.nav-list');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        // Text formatting functions
+        function formatText(command) {
+            document.execCommand(command, false, null);
+        }
+
+        // Mood selection
+        const moodButtons = document.querySelectorAll('.mood-btn');
+        moodButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                moodButtons.forEach(btn => btn.classList.remove('selected'));
+                button.classList.add('selected');
+            });
+        });
+
+        // Save functionality (basic example)
+        const saveBtn = document.querySelector('.save-btn');
+        const publishBtn = document.querySelector('.publish-btn');
+        const editor = document.querySelector('.editor');
+
+        saveBtn.addEventListener('click', () => {
+            localStorage.setItem('draftContent', editor.innerHTML);
+            alert('Draft saved successfully!');
+        });
+
+        publishBtn.addEventListener('click', () => {
+            // Here you would typically send the content to a server
+            alert('Entry published successfully!');
+        });
+
+        // Load saved draft if exists
+        window.addEventListener('load', () => {
+            const savedContent = localStorage.getItem('draftContent');
+            if (savedContent) {
+                editor.innerHTML = savedContent;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Get personalized help and support for your mental well-being. Find resources and professional assistance." />
+    <meta name="keywords" content="mental health support, counseling, therapy, crisis help, wellness resources" />
+    <meta name="author" content="Nivriti" />
+    <title>Get Help - Nivriti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="assets/icons/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .help-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        .emergency-banner {
+            background: #ff4444;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .emergency-banner a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .help-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .help-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .help-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .help-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .help-card li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .help-card li::before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: #f8f5ff;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .resource-link:hover {
+            background: #efe9ff;
+            transform: translateX(5px);
+        }
+
+        .resource-icon {
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-family: 'Lato', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(107, 76, 230, 0.1);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Lato', sans-serif;
+            font-weight: 500;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .help-container {
+                padding: 1rem;
+            }
+
+            .help-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero-section">
+        <div class="overlay">
+            <nav class="main-nav">
+                <div class="logo">
+                    <a href="index.html">Nivriti</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="writing.html">Writing Space</a></li>
+                    <li><a href="reset.html">1-Minute Reset</a></li>
+                    <li><a href="detox.html">Mental Detox</a></li>
+                    <li><a href="capsule.html">Time Capsule</a></li>
+                    <li><a href="issues.html" class="active">Get Help</a></li>
+                    <li class="auth-buttons">
+                        <a href="login.html" class="btn-login">Login</a>
+                        <a href="signup.html" class="btn-signup">Sign Up</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hero-content">
+                <h1>Get Help</h1>
+                <p>You're not alone. We're here to support you.</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="help-container">
+            <div class="emergency-banner">
+                <h2>Need immediate help?</h2>
+                <p>If you're in crisis or having thoughts of suicide, please call the National Suicide Prevention Lifeline: <a href="tel:988">988</a> (available 24/7)</p>
+            </div>
+
+            <div class="help-grid">
+                <div class="help-card">
+                    <h2>Crisis Resources</h2>
+                    <ul>
+                        <li>National Suicide Prevention Lifeline: 988</li>
+                        <li>Crisis Text Line: Text HOME to 741741</li>
+                        <li>Emergency Services: 911</li>
+                        <li>SAMHSA's National Helpline: 1-800-662-4357</li>
+                    </ul>
+                </div>
+
+                <div class="help-card">
+                    <h2>Find a Therapist</h2>
+                    <a href="#" class="resource-link">
+                        <span class="resource-icon">👥</span>
+                        <span>Psychology Today Therapist Directory</span>
+                    </a>
+                    <a href="#" class="resource-link">
+                        <span class="resource-icon">🏥</span>
+                        <span>BetterHelp Online Therapy</span>
+                    </a>
+                    <a href="#" class="resource-link">
+                        <span class="resource-icon">💻</span>
+                        <span>Talkspace Online Therapy</span>
+                    </a>
+                </div>
+
+                <div class="help-card">
+                    <h2>Self-Help Resources</h2>
+                    <ul>
+                        <li>Mental Health America Resources</li>
+                        <li>NAMI Support Groups</li>
+                        <li>Anxiety and Depression Association</li>
+                        <li>Mindfulness and Meditation Apps</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h2>Request Support</h2>
+                <p>Fill out this form and we'll connect you with appropriate resources.</p>
+                <form id="supportForm">
+                    <div class="form-group">
+                        <label for="name">Name (Optional)</label>
+                        <input type="text" id="name" placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required placeholder="Your email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="supportType">Type of Support Needed</label>
+                        <select id="supportType" required>
+                            <option value="">Select type of support</option>
+                            <option value="counseling">Counseling</option>
+                            <option value="resources">Mental Health Resources</option>
+                            <option value="support-group">Support Groups</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" required placeholder="Tell us how we can help..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Request</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>About Nivriti</h3>
+                    <p>Dedicated to promoting mental wellness and providing a safe space for personal growth.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://facebook.com/nivriti" target="_blank" rel="noopener" aria-label="Facebook">
+                            <img src="assets/icons/facebook-icon.svg" alt="Facebook">
+                        </a>
+                        <a href="https://instagram.com/nivriti" target="_blank" rel="noopener" aria-label="Instagram">
+                            <img src="assets/icons/instagram-icon.svg" alt="Instagram">
+                        </a>
+                        <a href="https://twitter.com/nivriti" target="_blank" rel="noopener" aria-label="Twitter">
+                            <img src="assets/icons/twitter-icon.svg" alt="Twitter">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Nivriti - Peace Begins Within. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/issues.js"></script>
+</body>
+</html>

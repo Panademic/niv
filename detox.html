@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Digital detox and mindful technology use guidance to improve mental wellness" />
+    <meta name="keywords" content="digital detox, mindful technology, screen time, mental wellness, digital wellness" />
+    <meta name="author" content="Nivriti" />
+    <title>Digital Detox - Nivriti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="assets/icons/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        :root {
+            --primary-color: #2A9D8F;
+            --secondary-color: #264653;
+            --accent-color: #E9C46A;
+            --text-color: #333;
+            --light-text: #666;
+            --background-color: #F5F5F7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            min-height: 100vh;
+            color: var(--text-color);
+        }
+
+        .cover-section {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            margin-bottom: 4rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            background-color: var(--secondary-color);
+        }
+
+        .cover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+            transition: opacity 0.3s ease;
+        }
+
+        .cover-image.error {
+            opacity: 0;
+        }
+
+        .cover-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .cover-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .cover-text p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .detox-container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            position: relative;
+            z-index: 1;
+            min-height: calc(100vh - 500px - 4rem);
+        }
+
+        .detox-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            color: var(--light-text);
+            font-size: 1.1rem;
+        }
+
+        .detox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .detox-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .detox-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .detox-card h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .progress-container {
+            margin: 1.5rem 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: var(--background-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .timer-display {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .detox-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .primary-btn {
+            background: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .secondary-btn {
+            background: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .detox-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .checklist {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            padding: 0.5rem;
+            background: var(--background-color);
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            background: #e8e8ea;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-right: 1rem;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .cover-section {
+                height: 300px;
+                margin-bottom: 2rem;
+            }
+
+            .cover-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .cover-text p {
+                font-size: 1rem;
+            }
+
+            .detox-container {
+                padding: 2rem 1rem;
+            }
+
+            .detox-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cover-section {
+                height: 250px;
+            }
+
+            .cover-text h1 {
+                font-size: 2rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+
+        /* Navigation Styles */
+        .hero-section {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            background-color: var(--secondary-color);
+            background-image: url('Images/mental detox.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero-section .overlay {
+            position: relative;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-nav {
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-list a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-list a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-list a.active {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-login, .btn-signup {
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login {
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-signup {
+            background: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--secondary-color);
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-list.active {
+                display: flex;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-login, .btn-signup {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero-section">
+        <div class="overlay">
+            <nav class="main-nav">
+                <div class="logo">
+                    <a href="index.html">Nivriti</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="writing.html">Writing Space</a></li>
+                    <li><a href="reset.html">1-Minute Reset</a></li>
+                    <li><a href="detox.html" class="active">Mental Detox</a></li>
+                    <li><a href="capsule.html">Time Capsule</a></li>
+                    <li><a href="issues.html">Get Help</a></li>
+                    <li class="auth-buttons">
+                        <a href="login.html" class="btn-login">Login</a>
+                        <a href="signup.html" class="btn-signup">Sign Up</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hero-content">
+                <h1>Digital Detox</h1>
+                <p>Take control of your screen time and digital well-being</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="cover-section">
+        <img src="Images/mental detox.jpg" alt="Digital Detox" class="cover-image" onerror="this.classList.add('error')">
+        <div class="cover-text">
+            <h1>Digital Detox</h1>
+            <p>Reconnect with yourself by disconnecting from technology</p>
+        </div>
+    </div>
+
+    <div class="detox-container">
+        <div class="detox-content">
+            <div class="header">
+                <div class="logo">Nivriti</div>
+                <div class="tagline">Peace Begins Within</div>
+            </div>
+
+            <div class="detox-grid">
+                <div class="detox-card">
+                    <h3>Screen Time Tracker</h3>
+                    <div class="timer-display">00:00:00</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="screenTimeProgress"></div>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button class="detox-btn primary-btn" id="startTracking">Start Tracking</button>
+                        <button class="detox-btn secondary-btn" id="resetTracking">Reset</button>
+                    </div>
+                </div>
+
+                <div class="detox-card">
+                    <h3>Digital Wellness Checklist</h3>
+                    <ul class="checklist">
+                        <li class="checklist-item">
+                            <input type="checkbox" id="notifications">
+                            <label for="notifications">Turn off non-essential notifications</label>
+                        </li>
+                        <li class="checklist-item">
+                            <input type="checkbox" id="grayscale">
+                            <label for="grayscale">Enable grayscale mode</label>
+                        </li>
+                        <li class="checklist-item">
+                            <input type="checkbox" id="apps">
+                            <label for="apps">Remove distracting apps</label>
+                        </li>
+                        <li class="checklist-item">
+                            <input type="checkbox" id="boundaries">
+                            <label for="boundaries">Set digital boundaries</label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="detox-card">
+                    <h3>Mindful Technology Tips</h3>
+                    <ul class="checklist">
+                        <li class="checklist-item">Practice 20-20-20 rule for eye care</li>
+                        <li class="checklist-item">Take regular movement breaks</li>
+                        <li class="checklist-item">Use blue light filters after sunset</li>
+                        <li class="checklist-item">Create tech-free zones at home</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/detox.js"></script>
+</body>
+</html>
